@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=3 uid="uid://33381ha4lv0r"]
+
+[ext_resource type="Script" path="res://script/hotkey_rebind_button.gd" id="1_oc1u4"]
+[ext_resource type="FontFile" uid="uid://bl1w4cipo08sj" path="res://font/LilitaOne-Regular.ttf" id="2_gtfdp"]
+[ext_resource type="Theme" uid="uid://d1l4rdub8ocgi" path="res://ui/popup_theme.tres" id="2_mnop4"]
+
+[node name="hotkey_rebind_button" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_oc1u4")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_right = 21.0
+offset_bottom = 11.5
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(1190, 30)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0.905882, 1)
+theme_override_fonts/font = ExtResource("2_gtfdp")
+theme_override_font_sizes/font_size = 48
+text = "ACTION"
+vertical_alignment = 1
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 200
+
+[node name="Button" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(320, 50)
+layout_mode = 2
+theme = ExtResource("2_mnop4")
+theme_type_variation = &"FlatButton"
+theme_override_font_sizes/font_size = 32
+toggle_mode = true
+text = "ACTION_KEY"
+
+[connection signal="pressed" from="HBoxContainer/Button" to="." method="_on_button_pressed"]

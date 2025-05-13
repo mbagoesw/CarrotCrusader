@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://dc5gvherw8vj7"]
+
+[ext_resource type="Script" path="res://mob_aa.gd" id="1_bn65y"]
+[ext_resource type="PackedScene" uid="uid://bsnr75wm4fvp3" path="res://bunny_aaa.tscn" id="1_hb2nf"]
+[ext_resource type="AudioStream" uid="uid://cb4vrg1q2i5hp" path="res://sfx/bunny_huh.mp3" id="2_4uwkh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6sodw"]
+radius = 74.0068
+
+[node name="mob_AA" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 3
+platform_floor_layers = 0
+script = ExtResource("1_bn65y")
+
+[node name="bunny_aaa" parent="." instance=ExtResource("1_hb2nf")]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -39)
+shape = SubResource("CircleShape2D_6sodw")
+
+[node name="MobsHit" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("2_4uwkh")
+pitch_scale = 1.18
+bus = &"Sfx"
+
+[node name="MobsDeath" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("2_4uwkh")
+volume_db = -5.0
+pitch_scale = 2.1
+bus = &"Sfx2"

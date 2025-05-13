@@ -1,0 +1,59 @@
+[gd_scene load_steps=6 format=3 uid="uid://cfja4dv5cpjgb"]
+
+[ext_resource type="Script" path="res://script/options_menu.gd" id="1_foaa5"]
+[ext_resource type="Shader" path="res://script/scroll.gdshader" id="2_m86fu"]
+[ext_resource type="PackedScene" uid="uid://bfevqocoxldwl" path="res://settings_tab_container.tscn" id="2_tqmjn"]
+[ext_resource type="Texture2D" uid="uid://bdmm8fxdurgpe" path="res://ui/background_pattern.png" id="3_sleml"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mn0x7"]
+shader = ExtResource("2_m86fu")
+shader_parameter/speed = 0.03
+
+[node name="Options_Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_foaa5")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.658824, 0.784314, 0.65098, 1)
+
+[node name="Pattern" type="TextureRect" parent="ColorRect"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_mn0x7")
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("3_sleml")
+stretch_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = -48
+
+[node name="Settings_Tab_Container" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_tqmjn")]
+layout_mode = 2

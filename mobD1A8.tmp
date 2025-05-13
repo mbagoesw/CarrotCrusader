@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://bac1h7085pmm1"]
+
+[ext_resource type="Script" path="res://mob.gd" id="1_5xlxh"]
+[ext_resource type="PackedScene" uid="uid://ogik4s70pgwl" path="res://characters/slime/bunny.tscn" id="2_6p6q2"]
+[ext_resource type="AudioStream" uid="uid://du76xbq2u0y3w" path="res://sfx/bunny_huh.wav" id="3_i7jky"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lwnl5"]
+radius = 74.0068
+
+[node name="Mob" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 3
+platform_floor_layers = 0
+script = ExtResource("1_5xlxh")
+
+[node name="Bunny" parent="." instance=ExtResource("2_6p6q2")]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -39)
+shape = SubResource("CircleShape2D_lwnl5")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_i7jky")
+bus = &"Sfx"

@@ -1,0 +1,290 @@
+[gd_scene load_steps=14 format=3 uid="uid://ogik4s70pgwl"]
+
+[ext_resource type="Script" path="res://characters/slime/bunny.gd" id="1_kylkl"]
+[ext_resource type="Texture2D" uid="uid://b7rhtttevhxtj" path="res://characters/ground_shadow.png" id="2_jq2yd"]
+[ext_resource type="Texture2D" uid="uid://x5q67fkr66ai" path="res://characters/slime/ears.png" id="3_0a7sr"]
+[ext_resource type="Texture2D" uid="uid://8e5ehc65kfrl" path="res://characters/slime/bunny_body.png" id="4_p1ofl"]
+[ext_resource type="Texture2D" uid="uid://0434dpvt76xc" path="res://characters/slime/bunny_face_idle.png" id="5_hngcv"]
+[ext_resource type="Texture2D" uid="uid://dus2jniyx62ah" path="res://characters/slime/bunny_face_hurt.png" id="6_i5v0b"]
+[ext_resource type="Texture2D" uid="uid://c8l46yofobx4i" path="res://characters/slime/bunny_body_hurt.png" id="7_qlbxo"]
+[ext_resource type="Texture2D" uid="uid://dua7did7txpmq" path="res://characters/slime/ears_hurt.png" id="8_41tjw"]
+
+[sub_resource type="Animation" id="Animation_y4lve"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anchor/Face:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-25.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Anchor/BunnyBody:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.5, 0.5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Anchor:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Anchor/Face/BunnyFace:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_hngcv")]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Anchor:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_lu163"]
+resource_name = "hurt"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anchor/Face/BunnyFace:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("6_i5v0b"), ExtResource("5_hngcv")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Anchor/Face:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-25.0, -30.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Anchor:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Anchor/BunnyBody:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("7_qlbxo"), ExtResource("4_p1ofl")]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Anchor/Ears:texture")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("8_41tjw"), ExtResource("3_0a7sr")]
+}
+
+[sub_resource type="Animation" id="Animation_71vdi"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anchor/Face:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [-28.0, -24.0, -28.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Anchor/BunnyBody:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(0.553, 0.501), Vector2(0.5, 0.5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Anchor:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Anchor/Ears:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, -1, 1),
+"update": 0,
+"values": [Vector2(0, -36), Vector2(0, -34), Vector2(0, -36)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Anchor/Face:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, -1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.96, 0.96), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_l6fy2"]
+resource_name = "walk"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anchor:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -12.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Anchor/BunnyBody:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.409, 0.5), Vector2(0.5, 0.409), Vector2(0.409, 0.5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Anchor/Face:position:y")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [-25.0, -20.0, -24.5, -20.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j6cum"]
+_data = {
+"RESET": SubResource("Animation_y4lve"),
+"hurt": SubResource("Animation_lu163"),
+"idle": SubResource("Animation_71vdi"),
+"walk": SubResource("Animation_l6fy2")
+}
+
+[node name="Bunny" type="Node2D"]
+position = Vector2(1, 0)
+script = ExtResource("1_kylkl")
+
+[node name="GroundShadow" type="Sprite2D" parent="."]
+modulate = Color(0.419608, 0.32549, 0.243137, 0.392157)
+z_index = -1
+z_as_relative = false
+position = Vector2(0, -20)
+scale = Vector2(1.64, 1.64)
+texture = ExtResource("2_jq2yd")
+
+[node name="Anchor" type="Marker2D" parent="."]
+
+[node name="Ears" type="Sprite2D" parent="Anchor"]
+position = Vector2(0, -36)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("8_41tjw")
+offset = Vector2(0, -36)
+
+[node name="BunnyBody" type="Sprite2D" parent="Anchor"]
+position = Vector2(0, -14)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_qlbxo")
+offset = Vector2(0, -36)
+
+[node name="Face" type="Marker2D" parent="Anchor"]
+position = Vector2(0, -25)
+
+[node name="BunnyFace" type="Sprite2D" parent="Anchor/Face"]
+position = Vector2(0, -4)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("5_hngcv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_j6cum")
+}

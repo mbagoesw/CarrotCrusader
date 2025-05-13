@@ -1,0 +1,585 @@
+[gd_scene load_steps=27 format=3 uid="uid://datea6w1ydvdg"]
+
+[ext_resource type="Script" path="res://script/main_gameplay.gd" id="1_a33mx"]
+[ext_resource type="Script" path="res://script/GameOver.gd" id="2_n3356"]
+[ext_resource type="Script" path="res://script/ScoreAnimation.gd" id="3_j7r5t"]
+[ext_resource type="Theme" uid="uid://d1l4rdub8ocgi" path="res://ui/popup_theme.tres" id="4_0lmtu"]
+[ext_resource type="FontFile" uid="uid://bl1w4cipo08sj" path="res://font/LilitaOne-Regular.ttf" id="4_4ci1r"]
+[ext_resource type="PackedScene" uid="uid://b7uoobcupllpw" path="res://tree_pool.tscn" id="4_i22p8"]
+[ext_resource type="PackedScene" uid="uid://cvb5ufonln33q" path="res://tree_manager.tscn" id="5_5g7fu"]
+[ext_resource type="AudioStream" uid="uid://b7781jj27tuc0" path="res://sfx/game_over.mp3" id="5_y5d2b"]
+[ext_resource type="Texture2D" uid="uid://c2s8yjdlje5hi" path="res://ui/gameplay_pattern.png" id="6_wudfq"]
+[ext_resource type="PackedScene" uid="uid://placam4ttild" path="res://player.tscn" id="7_u1n5a"]
+[ext_resource type="AudioStream" uid="uid://bv2jl1ade68sv" path="res://music/That's it for today_gameplay.mp3" id="8_2fxja"]
+[ext_resource type="Texture2D" uid="uid://d0pi38hhklvr3" path="res://ui/splash.png" id="9_8h0ai"]
+[ext_resource type="Script" path="res://script/MusicStreamPlayer.gd" id="9_rmaan"]
+[ext_resource type="PackedScene" uid="uid://cnjht3hvbing5" path="res://pause_menu.tscn" id="10_agjyu"]
+[ext_resource type="Shader" path="res://script/tutorial.gdshader" id="14_lrgku"]
+[ext_resource type="Texture2D" uid="uid://dk4roxy6tbcfv" path="res://ui/input_tutorial.png" id="15_gmff8"]
+[ext_resource type="Script" path="res://script/tutorial.gd" id="15_t60b7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p2hyj"]
+bg_color = Color(1, 1, 0.905882, 1)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(0.376471, 0.607843, 0.529412, 1)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+shadow_color = Color(0.298039, 0.14902, 0.0235294, 1)
+shadow_size = 2
+shadow_offset = Vector2(0, 15)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0e3pp"]
+bg_color = Color(1, 0.717647, 0.301961, 1)
+shadow_size = 3
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qgd3e"]
+
+[sub_resource type="Curve2D" id="Curve2D_cfh3y"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -60, -131, 0, 0, 0, 0, 2157.95, -126.39, 0, 0, 0, 0, 2155.46, 262.791, 0, 0, 0, 0, 2133, 1348, 0, 0, 0, 0, 1024, 1336, 0, 0, 0, 0, -67, 1348, 0, 0, 0, 0, -64, -128, 0, 0, 0, 0, -64, -114)
+}
+point_count = 8
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lhq0p"]
+shader = ExtResource("14_lrgku")
+shader_parameter/hole_position = Vector2(100, 100)
+shader_parameter/hole_size = Vector2(0.08, 0.1)
+shader_parameter/overlay_color = Vector4(0, 0, 0, 0.7)
+
+[sub_resource type="Animation" id="Animation_tgfkg"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_kr8wx"]
+resource_name = "Tutorial"
+length = 15.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3.4, 3.5, 6.4, 6.5, 9.4, 9.5, 12.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [Vector2(500, 500)],
+"method": &"set_hole_position"
+}, {
+"args": [Vector2(0.123, 0.06)],
+"method": &"set_hole_size"
+}, {
+"args": [Vector2(0.495, 0.07)],
+"method": &"set_hole_position"
+}, {
+"args": [Vector2(0.08, 0.1)],
+"method": &"set_hole_size"
+}, {
+"args": [Vector2(0.913, 0.458)],
+"method": &"set_hole_position"
+}, {
+"args": [Vector2(0.1, 0.05)],
+"method": &"set_hole_size"
+}, {
+"args": [Vector2(0.497, 0.358)],
+"method": &"set_hole_position"
+}, {
+"args": [Vector2(100, 100)],
+"method": &"set_hole_position"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(15),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_on_tutorial_finished"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/path = NodePath("ColorRect/InputLabel4:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1, 1.1, 3.1),
+"transitions": PackedFloat32Array(1, 20.393, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_tpdcc"]
+resource_name = "fade_in"
+length = 15.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect/InputImage:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.7, 3.4),
+"transitions": PackedFloat32Array(1, 1, 10.5561, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect/InputLabel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.7, 3.4),
+"transitions": PackedFloat32Array(1, 10.5, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect/InputLabel2:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1, 0.7, 3.4),
+"transitions": PackedFloat32Array(1, 10.5, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ColorRect/InputLabel3:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(3, 3.5, 6.3),
+"transitions": PackedFloat32Array(1, 50.2134, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ColorRect/InputLabel4:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(6, 6.5, 9.3),
+"transitions": PackedFloat32Array(1, 20.393, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ColorRect/InputLabel5:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(9, 9.5, 12.3),
+"transitions": PackedFloat32Array(1, 26.9087, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ColorRect/InputLabel6:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(12, 12.5, 15),
+"transitions": PackedFloat32Array(1, 68.5936, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_etiiw"]
+_data = {
+"RESET": SubResource("Animation_tgfkg"),
+"Tutorial": SubResource("Animation_kr8wx"),
+"fade_in": SubResource("Animation_tpdcc")
+}
+
+[node name="Game" type="Node2D"]
+y_sort_enabled = true
+position = Vector2(-31, 0)
+script = ExtResource("1_a33mx")
+
+[node name="Main_Gameplay" type="Node2D" parent="." groups=["Main_Gameplay"]]
+
+[node name="ScoreLayer" type="CanvasLayer" parent="Main_Gameplay"]
+
+[node name="MarginContainer" type="MarginContainer" parent="Main_Gameplay/ScoreLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -121.0
+offset_right = 49.0
+offset_bottom = 50.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 170
+
+[node name="ScoreAnimation" type="Control" parent="Main_Gameplay/ScoreLayer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("3_j7r5t")
+
+[node name="CurrentScore" type="Label" parent="Main_Gameplay/ScoreLayer/MarginContainer/ScoreAnimation"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(1, 1, 0.905882, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/font = ExtResource("4_4ci1r")
+theme_override_font_sizes/font_size = 48
+text = "0000000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="IncomingScore" type="Label" parent="Main_Gameplay/ScoreLayer/MarginContainer/ScoreAnimation"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(1, 1, 0.905882, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/font = ExtResource("4_4ci1r")
+theme_override_font_sizes/font_size = 48
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameOver" type="CanvasLayer" parent="Main_Gameplay"]
+unique_name_in_owner = true
+process_mode = 3
+visible = false
+script = ExtResource("2_n3356")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Main_Gameplay/GameOver"]
+stream = ExtResource("5_y5d2b")
+volume_db = -8.5
+pitch_scale = 0.7
+
+[node name="ColorRect" type="ColorRect" parent="Main_Gameplay/GameOver"]
+process_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.643137)
+
+[node name="Panel" type="Panel" parent="Main_Gameplay/GameOver/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -126.0
+offset_right = 500.0
+offset_bottom = 114.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_p2hyj")
+
+[node name="Label" type="Label" parent="Main_Gameplay/GameOver/ColorRect"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 230.0
+offset_bottom = 326.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.298039, 0.14902, 0.0235294, 1)
+theme_override_fonts/font = ExtResource("4_4ci1r")
+theme_override_font_sizes/font_size = 70
+theme_override_styles/normal = SubResource("StyleBoxFlat_0e3pp")
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FinalScoreLabel" type="Label" parent="Main_Gameplay/GameOver/ColorRect"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -90.0
+offset_top = -547.0
+offset_right = 90.0
+offset_bottom = -466.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.298039, 0.14902, 0.0235294, 1)
+theme_override_fonts/font = ExtResource("4_4ci1r")
+theme_override_font_sizes/font_size = 70
+text = "0000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Main_Gameplay/GameOver/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -169.5
+offset_top = -88.0
+offset_right = 169.5
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.298039, 0.14902, 0.0235294, 1)
+theme_override_fonts/font = ExtResource("4_4ci1r")
+theme_override_font_sizes/font_size = 70
+text = "Your Score:"
+
+[node name="MainMenuButton" type="Button" parent="Main_Gameplay/GameOver"]
+unique_name_in_owner = true
+process_mode = 3
+custom_minimum_size = Vector2(200, 50)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -323.0
+offset_right = 100.0
+offset_bottom = -273.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 1
+theme = ExtResource("4_0lmtu")
+theme_override_font_sizes/font_size = 28
+text = "Main Menu"
+
+[node name="TreePool" parent="Main_Gameplay" instance=ExtResource("4_i22p8")]
+
+[node name="TreeManager" parent="Main_Gameplay" instance=ExtResource("5_5g7fu")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Main_Gameplay"]
+layer = -30
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Main_Gameplay/CanvasLayer"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Main_Gameplay/CanvasLayer/ParallaxBackground"]
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(1920, 1080)
+
+[node name="TextureRect" type="TextureRect" parent="Main_Gameplay/CanvasLayer/ParallaxBackground/ParallaxLayer"]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("6_wudfq")
+stretch_mode = 1
+
+[node name="Player" parent="Main_Gameplay" instance=ExtResource("7_u1n5a")]
+position = Vector2(966, 678)
+
+[node name="TextureRect" type="TextureRect" parent="Main_Gameplay/Player"]
+z_index = 2
+offset_left = 752.0
+offset_top = -108.0
+offset_right = 944.0
+offset_bottom = 84.0
+scale = Vector2(0.64, 0.64)
+texture = ExtResource("9_8h0ai")
+
+[node name="MultiplierLabel" type="Label" parent="Main_Gameplay/Player"]
+unique_name_in_owner = true
+z_index = 2
+offset_left = 788.0
+offset_top = -77.0
+offset_right = 914.0
+offset_bottom = -10.0
+theme_override_colors/font_color = Color(1, 1, 0.905882, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/font = ExtResource("4_4ci1r")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxTexture_qgd3e")
+text = "000"
+
+[node name="MusicStreamPlayer" type="AudioStreamPlayer" parent="Main_Gameplay/Player"]
+stream = ExtResource("8_2fxja")
+autoplay = true
+bus = &"Music"
+script = ExtResource("9_rmaan")
+target_volume = -20.0
+
+[node name="Path2D" type="Path2D" parent="Main_Gameplay"]
+visible = false
+position = Vector2(-88.4164, -103.034)
+scale = Vector2(1.12811, 1.16768)
+curve = SubResource("Curve2D_cfh3y")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Main_Gameplay/Path2D"]
+unique_name_in_owner = true
+position = Vector2(-60, -131)
+rotation = 0.00207849
+
+[node name="MobSpawnTimer" type="Timer" parent="Main_Gameplay"]
+
+[node name="HealthPackTimer" type="Timer" parent="Main_Gameplay"]
+unique_name_in_owner = true
+
+[node name="MultiplierDecayTimer" type="Timer" parent="Main_Gameplay"]
+unique_name_in_owner = true
+
+[node name="UI" type="CanvasLayer" parent="."]
+process_mode = 3
+
+[node name="pause_menu" parent="UI" instance=ExtResource("10_agjyu")]
+visible = false
+anchors_preset = -1
+mouse_filter = 2
+
+[node name="Tutorial" type="CanvasLayer" parent="UI"]
+
+[node name="ColorRect" type="ColorRect" parent="UI/Tutorial"]
+material = SubResource("ShaderMaterial_lhq0p")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.552941)
+script = ExtResource("15_t60b7")
+
+[node name="InputImage" type="TextureRect" parent="UI/Tutorial/ColorRect"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 704.0
+offset_top = 386.0
+offset_right = 1037.0
+offset_bottom = 780.0
+scale = Vector2(0.64, 0.64)
+texture = ExtResource("15_gmff8")
+
+[node name="InputLabel" type="Label" parent="UI/Tutorial/ColorRect"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 950.0
+offset_top = 462.0
+offset_right = 1148.0
+offset_bottom = 534.0
+theme_override_colors/font_color = Color(1, 1, 0.905882, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/font = ExtResource("4_4ci1r")
+theme_override_font_sizes/font_size = 62
+text = "= Move"
+
+[node name="InputLabel2" type="Label" parent="UI/Tutorial/ColorRect"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 950.0
+offset_top = 571.0
+offset_right = 1149.0
+offset_bottom = 643.0
+theme_override_colors/font_color = Color(1, 1, 0.905882, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/font = ExtResource("4_4ci1r")
+theme_override_font_sizes/font_size = 62
+text = "= Shoot"
+
+[node name="InputLabel3" type="Label" parent="UI/Tutorial/ColorRect"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 493.0
+offset_top = 136.0
+offset_right = 1522.0
+offset_bottom = 208.0
+theme_override_colors/font_color = Color(1, 1, 0.905882, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/font = ExtResource("4_4ci1r")
+theme_override_font_sizes/font_size = 48
+text = "Defeat the enemies to earn more score"
+
+[node name="InputLabel4" type="Label" parent="UI/Tutorial/ColorRect"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 1142.0
+offset_top = 331.0
+offset_right = 1880.0
+offset_bottom = 446.0
+theme_override_colors/font_color = Color(1, 1, 0.905882, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/font = ExtResource("4_4ci1r")
+theme_override_font_sizes/font_size = 48
+text = "Gain score multiplier by attacking 
+and it resets if you get hit"
+
+[node name="InputLabel5" type="Label" parent="UI/Tutorial/ColorRect"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 481.0
+offset_top = 417.0
+offset_right = 1524.0
+offset_bottom = 489.0
+theme_override_colors/font_color = Color(1, 1, 0.905882, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/font = ExtResource("4_4ci1r")
+theme_override_font_sizes/font_size = 48
+text = "Watch your HP! if it reaches 0 then it's GAME OVER"
+
+[node name="InputLabel6" type="Label" parent="UI/Tutorial/ColorRect"]
+modulate = Color(1, 1, 1, 0.6)
+layout_mode = 0
+offset_left = 404.0
+offset_top = 413.0
+offset_right = 1543.0
+offset_bottom = 527.0
+theme_override_colors/font_color = Color(1, 0.717647, 0.301961, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/font = ExtResource("4_4ci1r")
+theme_override_font_sizes/font_size = 99
+text = "ANNIHILATE THE BUNNIES"
+
+[node name="FadeAnimationPlayer" type="AnimationPlayer" parent="UI/Tutorial/ColorRect"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_etiiw")
+}
+
+[node name="TutorialAnimationPlayer" type="AnimationPlayer" parent="UI/Tutorial/ColorRect"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_etiiw")
+}
+
+[connection signal="pressed" from="Main_Gameplay/GameOver/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="health_depleted" from="Main_Gameplay/Player" to="." method="_on_player_health_depleted"]
+[connection signal="timeout" from="Main_Gameplay/MobSpawnTimer" to="." method="_on_mob_spawn_timer_timeout"]

@@ -1,0 +1,365 @@
+[gd_scene load_steps=11 format=3 uid="uid://wyhnqphpwfeh"]
+
+[ext_resource type="Script" path="res://script/high_score_menu.gd" id="1_vkxbx"]
+[ext_resource type="Shader" path="res://script/scroll.gdshader" id="2_uhse0"]
+[ext_resource type="Texture2D" uid="uid://bdmm8fxdurgpe" path="res://ui/background_pattern.png" id="3_awrik"]
+[ext_resource type="FontFile" uid="uid://bl1w4cipo08sj" path="res://font/LilitaOne-Regular.ttf" id="4_sms0h"]
+[ext_resource type="Theme" uid="uid://d1l4rdub8ocgi" path="res://ui/popup_theme.tres" id="5_kjdw3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_khhre"]
+shader = ExtResource("2_uhse0")
+shader_parameter/speed = 0.03
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fsboa"]
+bg_color = Color(0.298039, 0.14902, 0.0235294, 1)
+expand_margin_top = 10.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pcw2k"]
+bg_color = Color(0.298039, 0.14902, 0.0235294, 1)
+expand_margin_top = 10.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fwua0"]
+bg_color = Color(0.298039, 0.14902, 0.0235294, 1)
+expand_margin_top = 10.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_bv8rc"]
+color = Color(0, 0, 0, 0)
+
+[node name="HighScore_Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 255.0
+offset_bottom = 152.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.88, 0.88)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_vkxbx")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.658824, 0.784314, 0.65098, 1)
+
+[node name="Pattern" type="TextureRect" parent="ColorRect"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_khhre")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_awrik")
+stretch_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScoreTable" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="TitleContainer" type="HBoxContainer" parent="MarginContainer/ScoreTable"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_constants/separation = 0
+
+[node name="NoTitle" type="Label" parent="MarginContainer/ScoreTable/TitleContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(1, 1, 0.905882, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.392157)
+theme_override_constants/shadow_offset_y = 4
+theme_override_fonts/font = ExtResource("4_sms0h")
+theme_override_font_sizes/font_size = 58
+theme_override_styles/normal = SubResource("StyleBoxFlat_fsboa")
+text = "NO"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreTitle" type="Label" parent="MarginContainer/ScoreTable/TitleContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 0.905882, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.392157)
+theme_override_constants/shadow_offset_y = 4
+theme_override_fonts/font = ExtResource("4_sms0h")
+theme_override_font_sizes/font_size = 58
+theme_override_styles/normal = SubResource("StyleBoxFlat_pcw2k")
+text = "SCORE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NameTitle" type="Label" parent="MarginContainer/ScoreTable/TitleContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 0.905882, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.392157)
+theme_override_constants/shadow_offset_y = 4
+theme_override_fonts/font = ExtResource("4_sms0h")
+theme_override_font_sizes/font_size = 58
+theme_override_styles/normal = SubResource("StyleBoxFlat_fwua0")
+text = "PLAYER NAME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/ScoreTable"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxLine_bv8rc")
+
+[node name="Row1" type="HBoxContainer" parent="MarginContainer/ScoreTable"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_constants/separation = 0
+
+[node name="Rank_Label_1" type="Label" parent="MarginContainer/ScoreTable/Row1"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(1, 1, 0.905882, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.392157)
+theme_override_constants/shadow_offset_y = 4
+theme_override_fonts/font = ExtResource("4_sms0h")
+theme_override_font_sizes/font_size = 58
+text = "NO"
+vertical_alignment = 1
+
+[node name="Score_Label_1" type="Label" parent="MarginContainer/ScoreTable/Row1"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 0.905882, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.392157)
+theme_override_constants/shadow_offset_y = 4
+theme_override_fonts/font = ExtResource("4_sms0h")
+theme_override_font_sizes/font_size = 58
+text = "SCORE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Name_Label_1" type="Label" parent="MarginContainer/ScoreTable/Row1"]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_colors/font_color = Color(1, 1, 0.905882, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.392157)
+theme_override_constants/shadow_offset_y = 4
+theme_override_fonts/font = ExtResource("4_sms0h")
+theme_override_font_sizes/font_size = 58
+text = "PLAYER NAME"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="HSeparator3" type="HSeparator" parent="MarginContainer/ScoreTable"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxLine_bv8rc")
+
+[node name="Row2" type="HBoxContainer" parent="MarginContainer/ScoreTable"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_constants/separation = 0
+
+[node name="Rank_Label_2" type="Label" parent="MarginContainer/ScoreTable/Row2"]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_colors/font_color = Color(1, 1, 0.905882, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.392157)
+theme_override_constants/shadow_offset_y = 4
+theme_override_fonts/font = ExtResource("4_sms0h")
+theme_override_font_sizes/font_size = 58
+text = "NO"
+vertical_alignment = 1
+
+[node name="Score_Label_2" type="Label" parent="MarginContainer/ScoreTable/Row2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 0.905882, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.392157)
+theme_override_constants/shadow_offset_y = 4
+theme_override_fonts/font = ExtResource("4_sms0h")
+theme_override_font_sizes/font_size = 58
+text = "SCORE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Name_Label_2" type="Label" parent="MarginContainer/ScoreTable/Row2"]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_colors/font_color = Color(1, 1, 0.905882, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.392157)
+theme_override_constants/shadow_offset_y = 4
+theme_override_fonts/font = ExtResource("4_sms0h")
+theme_override_font_sizes/font_size = 58
+text = "PLAYER NAME"
+vertical_alignment = 1
+
+[node name="HSeparator4" type="HSeparator" parent="MarginContainer/ScoreTable"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxLine_bv8rc")
+
+[node name="Row3" type="HBoxContainer" parent="MarginContainer/ScoreTable"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 6
+theme_override_constants/separation = 0
+
+[node name="Rank_Label_3" type="Label" parent="MarginContainer/ScoreTable/Row3"]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_colors/font_color = Color(1, 1, 0.905882, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.392157)
+theme_override_constants/shadow_offset_y = 4
+theme_override_fonts/font = ExtResource("4_sms0h")
+theme_override_font_sizes/font_size = 58
+text = "NO"
+vertical_alignment = 1
+
+[node name="Score_Label_3" type="Label" parent="MarginContainer/ScoreTable/Row3"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 0.905882, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.392157)
+theme_override_constants/shadow_offset_y = 4
+theme_override_fonts/font = ExtResource("4_sms0h")
+theme_override_font_sizes/font_size = 58
+text = "SCORE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Name_Label_3" type="Label" parent="MarginContainer/ScoreTable/Row3"]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_colors/font_color = Color(1, 1, 0.905882, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.392157)
+theme_override_constants/shadow_offset_y = 4
+theme_override_fonts/font = ExtResource("4_sms0h")
+theme_override_font_sizes/font_size = 58
+text = "PLAYER NAME"
+vertical_alignment = 1
+
+[node name="HSeparator5" type="HSeparator" parent="MarginContainer/ScoreTable"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxLine_bv8rc")
+
+[node name="Row4" type="HBoxContainer" parent="MarginContainer/ScoreTable"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 6
+theme_override_constants/separation = 0
+
+[node name="Rank_Label_4" type="Label" parent="MarginContainer/ScoreTable/Row4"]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_colors/font_color = Color(1, 1, 0.905882, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.392157)
+theme_override_constants/shadow_offset_y = 4
+theme_override_fonts/font = ExtResource("4_sms0h")
+theme_override_font_sizes/font_size = 58
+text = "NO"
+vertical_alignment = 1
+
+[node name="Score_Label_4" type="Label" parent="MarginContainer/ScoreTable/Row4"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 0.905882, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.392157)
+theme_override_constants/shadow_offset_y = 4
+theme_override_fonts/font = ExtResource("4_sms0h")
+theme_override_font_sizes/font_size = 58
+text = "SCORE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Name_Label_4" type="Label" parent="MarginContainer/ScoreTable/Row4"]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_colors/font_color = Color(1, 1, 0.905882, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.392157)
+theme_override_constants/shadow_offset_y = 4
+theme_override_fonts/font = ExtResource("4_sms0h")
+theme_override_font_sizes/font_size = 58
+text = "PLAYER NAME"
+vertical_alignment = 1
+
+[node name="HSeparator6" type="HSeparator" parent="MarginContainer/ScoreTable"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxLine_bv8rc")
+
+[node name="Row5" type="HBoxContainer" parent="MarginContainer/ScoreTable"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 6
+theme_override_constants/separation = 0
+
+[node name="Rank_Label_5" type="Label" parent="MarginContainer/ScoreTable/Row5"]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_colors/font_color = Color(1, 1, 0.905882, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.392157)
+theme_override_constants/shadow_offset_y = 4
+theme_override_fonts/font = ExtResource("4_sms0h")
+theme_override_font_sizes/font_size = 58
+text = "NO"
+vertical_alignment = 1
+
+[node name="Score_Label_5" type="Label" parent="MarginContainer/ScoreTable/Row5"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 0.905882, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.392157)
+theme_override_constants/shadow_offset_y = 4
+theme_override_fonts/font = ExtResource("4_sms0h")
+theme_override_font_sizes/font_size = 58
+text = "SCORE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Name_Label_5" type="Label" parent="MarginContainer/ScoreTable/Row5"]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_colors/font_color = Color(1, 1, 0.905882, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.392157)
+theme_override_constants/shadow_offset_y = 4
+theme_override_fonts/font = ExtResource("4_sms0h")
+theme_override_font_sizes/font_size = 58
+text = "PLAYER NAME"
+vertical_alignment = 1
+
+[node name="Exit_Button" type="Button" parent="MarginContainer/ScoreTable"]
+custom_minimum_size = Vector2(320, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme = ExtResource("5_kjdw3")
+theme_type_variation = &"FlatButton"
+theme_override_font_sizes/font_size = 32
+text = "Exit"
+
+[node name="HSeparator7" type="HSeparator" parent="MarginContainer/ScoreTable"]
+layout_mode = 2
+theme_override_constants/separation = 30
+theme_override_styles/separator = SubResource("StyleBoxLine_bv8rc")

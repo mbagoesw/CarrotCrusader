@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bv2jl1ade68sv"
+path="res://.godot/imported/That's it for today_gameplay.mp3-a3529153563a949380abe9b2a2698f79.mp3str"
+
+[deps]
+
+source_file="res://music/That's it for today_gameplay.mp3"
+dest_files=["res://.godot/imported/That's it for today_gameplay.mp3-a3529153563a949380abe9b2a2698f79.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,15 @@
+CharacterBody2D
+AudioStreamPlayer
+AnimationPlayer
+Node2D
+Sprite2D
+Label
+TextureRect
+ColorRect
+CanvasLayer
+Panel
+ProgressBar
+MarginContainer
+HSeparator
+HBoxContainer
+VBoxContainer

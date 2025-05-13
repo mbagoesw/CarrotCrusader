@@ -1,0 +1,251 @@
+[gd_scene load_steps=13 format=3 uid="uid://bsnr75wm4fvp3"]
+
+[ext_resource type="Script" path="res://bunny_aaa.gd" id="1_0xsta"]
+[ext_resource type="Texture2D" uid="uid://b7rhtttevhxtj" path="res://characters/ground_shadow.png" id="1_gf42v"]
+[ext_resource type="Texture2D" uid="uid://8xjyclh1p8xd" path="res://characters/slime/earsA.png" id="2_50x1y"]
+[ext_resource type="Texture2D" uid="uid://dpn4psdndlgxu" path="res://characters/slime/bunnyA_body.png" id="3_8hns6"]
+[ext_resource type="Texture2D" uid="uid://cpdundt4bxcoq" path="res://characters/slime/bunnyA_face_idle.png" id="4_wcndo"]
+[ext_resource type="Texture2D" uid="uid://ddplbnsqw4k3v" path="res://characters/slime/bunnyA_face_hurt.png" id="5_j2708"]
+[ext_resource type="Texture2D" uid="uid://dg1bdin21o5yh" path="res://characters/slime/bunnyA_body_hurt.png" id="6_1di7p"]
+[ext_resource type="Texture2D" uid="uid://c7fr5a8cf307k" path="res://characters/slime/earsA_hurt.png" id="7_cenfx"]
+
+[sub_resource type="Animation" id="Animation_3n1tp"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anchor/Ears:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_50x1y")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Anchor/BunnyBody:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_8hns6")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Anchor:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Anchor:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Anchor/BunnyBody:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.5, 0.5)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Anchor/Face:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -25)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Anchor/Face/BunnyFace:texture")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_wcndo")]
+}
+
+[sub_resource type="Animation" id="Animation_5e2ox"]
+resource_name = "hurt"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anchor/Face:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -25), Vector2(0, -30)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Anchor:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Anchor/BunnyBody:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("6_1di7p"), ExtResource("3_8hns6")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Anchor/Ears:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("7_cenfx"), ExtResource("2_50x1y")]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Anchor/Face/BunnyFace:texture")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("5_j2708"), ExtResource("4_wcndo")]
+}
+
+[sub_resource type="Animation" id="Animation_jeyw8"]
+resource_name = "walk"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anchor:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -12.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Anchor/BunnyBody:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.409, 0.5), Vector2(0.5, 0.409), Vector2(0.409, 0.5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Anchor/Face:position:y")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [-25.0, -20.0, -24.5, -20.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sguvk"]
+_data = {
+"RESET": SubResource("Animation_3n1tp"),
+"hurt": SubResource("Animation_5e2ox"),
+"walk": SubResource("Animation_jeyw8")
+}
+
+[node name="bunny_aaa" type="Node2D"]
+position = Vector2(1, 0)
+script = ExtResource("1_0xsta")
+
+[node name="GroundShadow" type="Sprite2D" parent="."]
+modulate = Color(0.419608, 0.32549, 0.243137, 0.392157)
+z_index = -1
+z_as_relative = false
+position = Vector2(0, -20)
+scale = Vector2(1.64, 1.64)
+texture = ExtResource("1_gf42v")
+
+[node name="Anchor" type="Marker2D" parent="."]
+
+[node name="Ears" type="Sprite2D" parent="Anchor"]
+position = Vector2(0, -34.268)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_50x1y")
+offset = Vector2(0, -36)
+
+[node name="BunnyBody" type="Sprite2D" parent="Anchor"]
+position = Vector2(0, -14)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_8hns6")
+offset = Vector2(0, -36)
+
+[node name="Face" type="Marker2D" parent="Anchor"]
+position = Vector2(0, -25)
+scale = Vector2(0.965, 0.965)
+
+[node name="BunnyFace" type="Sprite2D" parent="Anchor/Face"]
+position = Vector2(0, -4)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("4_wcndo")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_sguvk")
+}

@@ -1,0 +1,36 @@
+[gd_scene load_steps=9 format=3 uid="uid://dihgbto2bvaqb"]
+
+[ext_resource type="PackedScene" uid="uid://80wqhlw6niww" path="res://options_display_button.tscn" id="1_ywf01"]
+[ext_resource type="Script" path="res://script/window_mode_button.gd" id="2_gbe3o"]
+[ext_resource type="FontFile" uid="uid://bl1w4cipo08sj" path="res://font/LilitaOne-Regular.ttf" id="3_m6108"]
+[ext_resource type="Theme" uid="uid://d1l4rdub8ocgi" path="res://ui/popup_theme.tres" id="3_tdq8u"]
+[ext_resource type="StyleBox" uid="uid://c05kn0ej21bcw" path="res://ui/focus_button.tres" id="5_h658x"]
+[ext_resource type="StyleBox" uid="uid://n88ijpvjv0fr" path="res://ui/normal_button.tres" id="6_n68t2"]
+[ext_resource type="StyleBox" uid="uid://b1ef0hs63g4ra" path="res://ui/hover_button.tres" id="7_admir"]
+[ext_resource type="StyleBox" uid="uid://dqnljw0tlbtxf" path="res://ui/pressed_button.tres" id="8_u8dck"]
+
+[node name="Window_Mode_Button" instance=ExtResource("1_ywf01")]
+script = ExtResource("2_gbe3o")
+
+[node name="HBoxContainer" parent="." index="0"]
+theme_override_constants/separation = 900
+
+[node name="Label" parent="HBoxContainer" index="0"]
+theme_override_colors/font_color = Color(1, 1, 0.905882, 1)
+theme_override_fonts/font = ExtResource("3_m6108")
+theme_override_font_sizes/font_size = 48
+text = "Window Mode"
+
+[node name="VSeparator" parent="HBoxContainer" index="1"]
+visible = false
+
+[node name="OptionButton" parent="HBoxContainer" index="2"]
+custom_minimum_size = Vector2(312, 64)
+theme = ExtResource("3_tdq8u")
+theme_override_colors/font_color = Color(1, 1, 0.905882, 1)
+theme_override_fonts/font = ExtResource("3_m6108")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = ExtResource("5_h658x")
+theme_override_styles/normal = ExtResource("6_n68t2")
+theme_override_styles/hover = ExtResource("7_admir")
+theme_override_styles/pressed = ExtResource("8_u8dck")

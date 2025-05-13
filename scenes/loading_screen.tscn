@@ -1,0 +1,94 @@
+[gd_scene load_steps=8 format=3 uid="uid://yi4wja4qdepi"]
+
+[ext_resource type="Script" path="res://script/loading_screen.gd" id="1_3qytg"]
+[ext_resource type="Shader" path="res://script/scroll.gdshader" id="1_7raen"]
+[ext_resource type="Texture2D" uid="uid://bdmm8fxdurgpe" path="res://ui/background_pattern.png" id="2_pgfs6"]
+[ext_resource type="FontFile" uid="uid://bl1w4cipo08sj" path="res://font/LilitaOne-Regular.ttf" id="3_kb5cw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7ulot"]
+shader = ExtResource("1_7raen")
+shader_parameter/speed = 0.03
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_okdae"]
+bg_color = Color(1, 1, 0.905882, 1)
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wny2d"]
+bg_color = Color(0.298039, 0.14902, 0.0235294, 1)
+border_color = Color(0.266667, 0.266667, 0.266667, 0)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="LoadingScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3qytg")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.658824, 0.784314, 0.65098, 1)
+
+[node name="Pattern" type="TextureRect" parent="ColorRect"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_7ulot")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_pgfs6")
+stretch_mode = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -220.0
+offset_top = -7.5
+offset_right = 230.0
+offset_bottom = 38.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 0.905882, 1)
+theme_override_fonts/font = ExtResource("3_kb5cw")
+theme_override_font_sizes/font_size = 38
+theme_override_styles/background = SubResource("StyleBoxFlat_okdae")
+theme_override_styles/fill = SubResource("StyleBoxFlat_wny2d")
+step = 0.1
+value = 50.0
+
+[node name="LoadingLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -102.0
+offset_top = -83.0
+offset_right = 120.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_kb5cw")
+theme_override_font_sizes/font_size = 64
+text = "Loading..."

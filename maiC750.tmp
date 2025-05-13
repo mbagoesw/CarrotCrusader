@@ -1,0 +1,134 @@
+[gd_scene load_steps=8 format=3 uid="uid://bhrdsxsxy1v1x"]
+
+[ext_resource type="Script" path="res://main_menu.gd" id="1_yfful"]
+[ext_resource type="PackedScene" uid="uid://cfja4dv5cpjgb" path="res://options_menu.tscn" id="2_4dbof"]
+[ext_resource type="AudioStream" uid="uid://cvsgr5q75g85w" path="res://music/porcupop_mainmenu.mp3" id="3_tjen7"]
+[ext_resource type="PackedScene" uid="uid://wyhnqphpwfeh" path="res://high_score_menu.tscn" id="4_elrh7"]
+[ext_resource type="Script" path="res://MusicStreamPlayer.gd" id="5_gk3d8"]
+
+[sub_resource type="SystemFont" id="SystemFont_6u4mu"]
+font_names = PackedStringArray("Impact")
+
+[sub_resource type="SystemFont" id="SystemFont_yd5bv"]
+font_names = PackedStringArray("Impact")
+
+[node name="Main_Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_yfful")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.988235, 0.705882, 0.454902, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 60
+
+[node name="Seperator" type="Control" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 8
+theme_override_constants/shadow_offset_y = 8
+theme_override_constants/outline_size = 24
+theme_override_fonts/font = SubResource("SystemFont_6u4mu")
+theme_override_font_sizes/font_size = 64
+text = "GAME TITLE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 64
+alignment = 1
+
+[node name="Seperator2" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="PlayerNameInput" type="LineEdit" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+
+[node name="Play_Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(280, 80)
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_yd5bv")
+theme_override_font_sizes/font_size = 48
+text = "Play"
+
+[node name="Options_Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(280, 80)
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_yd5bv")
+theme_override_font_sizes/font_size = 48
+text = "Options"
+
+[node name="HighScore_Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(280, 80)
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_yd5bv")
+theme_override_font_sizes/font_size = 48
+text = "High Score"
+
+[node name="Credits_Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(280, 80)
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_yd5bv")
+theme_override_font_sizes/font_size = 48
+text = "Credits"
+
+[node name="Quit_Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(280, 80)
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_yd5bv")
+theme_override_font_sizes/font_size = 48
+text = "Quit"
+
+[node name="Options_Menu" parent="." instance=ExtResource("2_4dbof")]
+visible = false
+layout_mode = 1
+
+[node name="HighScore_Menu" parent="." instance=ExtResource("4_elrh7")]
+visible = false
+layout_mode = 1
+
+[node name="MusicStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_tjen7")
+volume_db = -10.023
+autoplay = true
+bus = &"Music"
+script = ExtResource("5_gk3d8")
+fade_duration = 5.0
+start_volume = -50.0
+target_volume = -15.0
+
+[connection signal="text_changed" from="MarginContainer/HBoxContainer/VBoxContainer/PlayerNameInput" to="." method="_on_player_name_input_text_changed"]

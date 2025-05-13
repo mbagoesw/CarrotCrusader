@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7uoobcupllpw"]
+
+[ext_resource type="Script" path="res://script/TreePool.gd" id="1_b334g"]
+[ext_resource type="PackedScene" uid="uid://c7klm636sqr66" path="res://pine_tree.tscn" id="2_8wioe"]
+
+[node name="TreePool" type="Node2D"]
+script = ExtResource("1_b334g")
+tree_scene = ExtResource("2_8wioe")

@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://bvb0es1tq242v"]
+
+[ext_resource type="PackedScene" uid="uid://80wqhlw6niww" path="res://options_display_button.tscn" id="1_bjed7"]
+[ext_resource type="Script" path="res://script/resolution_mode_button.gd" id="2_7dktf"]
+[ext_resource type="Theme" uid="uid://d1l4rdub8ocgi" path="res://ui/popup_theme.tres" id="3_dcg30"]
+[ext_resource type="FontFile" uid="uid://bl1w4cipo08sj" path="res://font/LilitaOne-Regular.ttf" id="3_r3sf2"]
+
+[node name="Resolution_Mode_Button" instance=ExtResource("1_bjed7")]
+script = ExtResource("2_7dktf")
+
+[node name="HBoxContainer" parent="." index="0"]
+theme_override_constants/separation = 935
+
+[node name="Label" parent="HBoxContainer" index="0"]
+theme_override_colors/font_color = Color(1, 1, 0.905882, 1)
+theme_override_fonts/font = ExtResource("3_r3sf2")
+theme_override_font_sizes/font_size = 48
+text = "Resolution"
+
+[node name="VSeparator" parent="HBoxContainer" index="1"]
+visible = false
+
+[node name="OptionButton" parent="HBoxContainer" index="2"]
+custom_minimum_size = Vector2(312, 64)
+theme = ExtResource("3_dcg30")
+theme_override_font_sizes/font_size = 32

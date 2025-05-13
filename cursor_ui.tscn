@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://ckmbi7qvva37q"]
+
+[ext_resource type="Script" path="res://script/cursor_ui.gd" id="1_dfy2t"]
+[ext_resource type="Texture2D" uid="uid://mjhfv3ft406o" path="res://pistol/crosshair.png" id="2_x7y4u"]
+
+[node name="CursorUI" type="Node2D" groups=["CursorUI"]]
+script = ExtResource("1_dfy2t")
+
+[node name="Crosshair" type="Sprite2D" parent="." groups=["CursorUI"]]
+unique_name_in_owner = true
+light_mask = 4
+z_index = 10
+position = Vector2(6, -6)
+scale = Vector2(1.97461, 1.97461)
+texture = ExtResource("2_x7y4u")

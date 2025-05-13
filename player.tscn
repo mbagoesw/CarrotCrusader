@@ -1,0 +1,70 @@
+[gd_scene load_steps=9 format=3 uid="uid://placam4ttild"]
+
+[ext_resource type="Script" path="res://script/player.gd" id="1_g8jv2"]
+[ext_resource type="PackedScene" uid="uid://pbmyh1qru7p" path="res://characters/happy_boo/carrot_knight.tscn" id="2_4cgsu"]
+[ext_resource type="PackedScene" uid="uid://buoftpp7ennls" path="res://carrot_knighttt.tscn" id="3_4a1w3"]
+[ext_resource type="PackedScene" uid="uid://b3owjeykqupkc" path="res://weapon.tscn" id="3_5jqo8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0cg0s"]
+radius = 32.0624
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vj6g2"]
+radius = 33.0606
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q2m0q"]
+bg_color = Color(1, 1, 0.905882, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_blgjo"]
+bg_color = Color(0.501961, 0.745098, 0.121569, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(0, 28)
+platform_floor_layers = 0
+script = ExtResource("1_g8jv2")
+
+[node name="CarrotKnight" parent="." instance=ExtResource("2_4cgsu")]
+unique_name_in_owner = true
+visible = false
+position = Vector2(0, 20)
+
+[node name="carrot_knightt" parent="." instance=ExtResource("3_4a1w3")]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("CircleShape2D_0cg0s")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Weapon" parent="." instance=ExtResource("3_5jqo8")]
+position = Vector2(-3, -37)
+
+[node name="HurtBox" type="Area2D" parent="."]
+unique_name_in_owner = true
+scale = Vector2(1.24136, 1.24136)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CircleShape2D_vj6g2")
+debug_color = Color(0.843137, 0.34902, 0.392157, 0.419608)
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+z_index = 3
+offset_left = -86.0
+offset_top = -164.0
+offset_right = 78.0
+offset_bottom = -137.0
+theme_override_colors/font_color = Color(0, 0, 0, 0)
+theme_override_styles/background = SubResource("StyleBoxFlat_q2m0q")
+theme_override_styles/fill = SubResource("StyleBoxFlat_blgjo")
+value = 100.0
