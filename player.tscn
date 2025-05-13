@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://placam4ttild"]
 
 [ext_resource type="Script" path="res://script/player.gd" id="1_g8jv2"]
-[ext_resource type="PackedScene" uid="uid://pbmyh1qru7p" path="res://characters/happy_boo/carrot_knight.tscn" id="2_4cgsu"]
+[ext_resource type="PackedScene" uid="uid://pbmyh1qru7p" path="res://characters/happy_boo/happy_boo.tscn" id="2_4cgsu"]
 [ext_resource type="PackedScene" uid="uid://buoftpp7ennls" path="res://carrot_knighttt.tscn" id="3_4a1w3"]
 [ext_resource type="PackedScene" uid="uid://b3owjeykqupkc" path="res://weapon.tscn" id="3_5jqo8"]
 

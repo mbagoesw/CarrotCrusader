@@ -1,7 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://cirjphr582du4"]
+[gd_scene load_steps=7 format=3 uid="uid://cjjljeg0i2c26"]
 
-[ext_resource type="Shader" uid="uid://bh1aerosbpqko" path="res://script/scroll.gdshader" id="1_j2d82"]
-[ext_resource type="Script" uid="uid://d0xje0706uosx" path="res://script/Credits_Menu.gd" id="1_t3qow"]
+[ext_resource type="Shader" path="res://script/scroll.gdshader" id="1_j2d82"]
+[ext_resource type="Script" path="res://script/Credits_Menu.gd" id="1_t3qow"]
 [ext_resource type="Texture2D" uid="uid://bdmm8fxdurgpe" path="res://ui/background_pattern.png" id="2_swrfv"]
 [ext_resource type="FontFile" uid="uid://bl1w4cipo08sj" path="res://font/LilitaOne-Regular.ttf" id="3_cwn44"]
 [ext_resource type="Theme" uid="uid://d1l4rdub8ocgi" path="res://ui/popup_theme.tres" id="4_hcm38"]

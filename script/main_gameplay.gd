@@ -81,7 +81,9 @@ func _ready():
 	
 	# Instantiate and add the custom cursor UI
 	var cursor_instance = cursor_ui.instantiate()
+	cursor_instance.name = "CursorUI"
 	add_child(cursor_instance)
+	cursor_instance.show_cursor()
 	
 	# Initialize the multiplier decay timer
 	multiplier_decay_timer.wait_time = multiplier_decay_time

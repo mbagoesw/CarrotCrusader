@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://1rhxjipf6u6b" path="res://ui/game_logo.png" id="4_t16yw"]
 [ext_resource type="FontFile" uid="uid://bl1w4cipo08sj" path="res://font/LilitaOne-Regular.ttf" id="5_bwtna"]
 [ext_resource type="Script" path="res://script/MusicStreamPlayer.gd" id="5_gk3d8"]
-[ext_resource type="PackedScene" path="res://Credits_Menu.tscn" id="8_iqfjp"]
+[ext_resource type="PackedScene" uid="uid://cjjljeg0i2c26" path="res://Credits_Menu.tscn" id="8_iqfjp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ut0uw"]
 shader = ExtResource("2_e6tea")
